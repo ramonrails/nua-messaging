@@ -31,16 +31,16 @@ class Message < ApplicationRecord
     # fail or pass?
     self.payment_confirmation = PaymentProviderFactory.provider.debit_card(User.patient)
     # gracefully update the message, if failed (or some other action)
-    self.body = '(Pay) ' + body
+    self.body = '(Pay) ' + body if payment_confirmation.nil?
   end
 
   # called from the controller when this message is shown
   def mark_as_read
+    return if read?
+
     # reduce unread count when user opens this message
-    unless read?
-      self.update_attribute(:read, true) # mark as read
-      self.inbox.decrement!(:unread_messages_count) # default decrement by 1
-    end
+    self.update_attribute(:read, true) # mark as read
+    self.inbox.decrement!(:unread_messages_count) # default decrement by 1
   end
 
   def received_this_week?
@@ -61,7 +61,7 @@ class Message < ApplicationRecord
     def manage_payment
       Payment.create user: User.patient if payment_confirmation
     end
-    
+
     # new message received, set marker
     def update_inbox_with_new_message_received
       # increament if this message was just created
