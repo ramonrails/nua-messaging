@@ -1,0 +1,20 @@
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+  <h6 class="border-bottom border-gray pb-2 mb-0">
+    Doctor's Inbox
+    <small>/ <%= User.doctor.inbox&.unread_messages_count %> unread messages</small>
+  </h6>
+  <%#
+    with so many features missing: authorization, authentication, REST interfaces for resources...
+    this is a dirty quick fix to see unread message count.
+    FIXME: ideally, to show unread message count to a doctor, you need
+    - authentication
+    - show messages only for the logged in user
+    so, a doctor will see his messages at /messages
+  %>
+
+  <%= render partial: "messages/message", collection: User.doctor.inbox&.messages %>
+
+  <small class="d-block text-right mt-3">
+    <a href="#">All updates</a>
+  </small>
+</div>

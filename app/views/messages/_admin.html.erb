@@ -1,0 +1,12 @@
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+  <h6 class="border-bottom border-gray pb-2 mb-0">
+    Admin's Inbox
+    <small>/ <%= User.admin.inbox&.unread_messages_count %> unread messages</small>
+  </h6>
+
+  <%= render partial: "messages/message", collection: User.admin.inbox&.messages %>
+
+  <small class="d-block text-right mt-3">
+    <a href="#">All updates</a>
+  </small>
+</div>

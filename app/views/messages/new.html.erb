@@ -1,0 +1,38 @@
+<div class="card mt-3">
+  <h5 class="card-header">
+    New Message
+  </h5>
+
+  <div class="card-body">
+    <%= form_for @message do |f| %>
+
+      <%#
+        at least tell the user what's wrong. right?
+      %>
+      <% if @message.errors.any? %>
+        <ul>
+          <% @message.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%#
+        we need the original_message_id reference
+        because of virtual attribute
+        DB reference would have saved us this extra work
+        we could have had business logic at the model directly
+      %>
+      <%= f.hidden_field :original_message_id %>
+
+      <div class="form-group py-3">
+        <%= f.text_area :body, class: "form-control", rows: 3 %>
+      </div>
+
+      <div class="form-group mb-0 text-right">
+        <%= f.submit 'Send Message', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+
+</div>
