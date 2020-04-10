@@ -1,3 +1,23 @@
+# sample rails project (partial) as an example of
+* TDD
+* MVP
+* DRY
+
+## What this is not
+* This is not an ideal code. Concepts are mixed up here.
+* Do not use these code samples as ideal or standard convention
+* only done with quick MVP (just as much asked) in mind
+
+## What this is
+* TDD for model and controller
+* test/unit for testing. no need for rspec or other sugar syntax. test/unit is faster than rspec too.
+* guard for continuous testing (little less RSI and boredom)
+* MVP as per client's specification. nothing less. nothing more.
+* DRY code. Don't repeat yourself. ever.
+* example of designing a quick proof of concept
+
+---
+
 Please find attached a repo containing a Rails application. The application currently just displays a message which a patient has received after applying for a treatment.
 
 The application comes packaged with the following models:
