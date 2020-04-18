@@ -94,3 +94,8 @@ Please write tests for the following:
 
 1. A lost script message is sent to the admin and the Payment API is called and Payment Record is created
 2. The call to the Payment API fails for some reason - ensure that the application gracefully degrades
+
+
+## Preview
+
+![preview](https://github.com/ramonrails/nua-messaging/blob/master/download.png?raw=true)
